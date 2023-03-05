@@ -3,6 +3,12 @@ brew "mackup"
 brew "mas"
 cask "font-source-code-pro"
 
+# for Ruby 3.x
+brew "openssl@3"
+brew "readline"
+brew "libyaml"
+brew "gmp"
+
 # App Store applications
 mas '1password for safari', id: 1569813296
 mas 'Amphetamine', id: 937984704
