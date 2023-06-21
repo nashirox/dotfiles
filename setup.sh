@@ -48,27 +48,32 @@ fi
 
 # install latest Ruby
 if !(type ruby > /dev/null 2>&1); then
-    LATEST_RUBY_VERSION=$(rbenv install -l | grep -v - | tail -1)
-    rbenv install $LATEST_RUBY_VERSION
-    rbenv global $LATEST_RUBY_VERSION
-    echo 'export PATH="/home/linuxbrew/.linuxbrew/bin/rbenv:$PATH"' >> $HOME/.profile
-    echo 'eval "$(rbenv init - bash)"' >> $HOME/.profile
+    asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+    asdf install ruby latest
+    asdf global ruby $(asdf latest ruby)
+    echo -e "\n. $(brew --prefix asdf)/asdf.sh" >> $HOME/.profile
+    echo -e "\n. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash" >> $HOME/.profile
     . $HOME/.profile
 fi
 
 # install latest Python
 if !(type python > /dev/null 2>&1); then
-    pyenv install 3.10.4
-    pyenv global 3.10.4
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
-    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
-    echo 'eval "$(pyenv init -)"' >> ~/.profile
+    asdf plugin-add python https://github.com/asdf-vm/asdf-python.git
+    asdf install python 3.10.4
+    asdf global python 3.10.4
+    echo -e "\n. $(brew --prefix asdf)/asdf.sh" >> $HOME/.profile
+    echo -e "\n. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash" >> $HOME/.profile
+    . $HOME/.profile
 fi
 
 # install latest node
 if !(type node > /dev/null 2>&1); then
-    volta install node
-    volta setup
+    asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+    bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
+    asdf install nodejs latest
+    asdf global nodejs $(asdf latest nodejs)
+    echo -e "\n. $(brew --prefix asdf)/asdf.sh" >> $HOME/.profile
+    echo -e "\n. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash" >> $HOME/.profile
     . $HOME/.profile
 fi
 
