@@ -29,7 +29,6 @@ cd "$DOTPATH"
 if !(type brew > /dev/null 2>&1); then
     yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
-    echo 'eval "$(rbenv init - bash)"' >> $HOME/.profile
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     . $HOME/.profile
     echo
