@@ -49,32 +49,29 @@ fi
 # install latest Ruby
 if !(type ruby > /dev/null 2>&1); then
     asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-    asdf install ruby latest
-    asdf global ruby $(asdf latest ruby)
-    echo -e "\n. $(brew --prefix asdf)/asdf.sh" >> $HOME/.profile
-    echo -e "\n. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash" >> $HOME/.profile
-    . $HOME/.profile
+    LATEST_RUBY_VERSION=$(asdf list-all ruby | tail -1)
+    asdf install ruby $LATEST_RUBY_VERSION
+    asdf global ruby $LATEST_RUBY_VERSION
 fi
 
 # install latest Python
 if !(type python > /dev/null 2>&1); then
-    asdf plugin-add python https://github.com/asdf-vm/asdf-python.git
-    asdf install python 3.10.4
-    asdf global python 3.10.4
-    echo -e "\n. $(brew --prefix asdf)/asdf.sh" >> $HOME/.profile
-    echo -e "\n. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash" >> $HOME/.profile
-    . $HOME/.profile
+    asdf plugin-add python https://github.com/danhper/asdf-python.git
+    LATEST_PYTHON_VERSION=$(asdf list-all python | tail -1)
+    asdf install python $LATEST_PYTHON_VERSION
+    asdf global python $LATEST_PYTHON_VERSION
 fi
 
 # install latest node
 if !(type node > /dev/null 2>&1); then
     asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-    bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
-    asdf install nodejs latest
-    asdf global nodejs $(asdf latest nodejs)
-    echo -e "\n. $(brew --prefix asdf)/asdf.sh" >> $HOME/.profile
-    echo -e "\n. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash" >> $HOME/.profile
-    . $HOME/.profile
+    
+    # Import the Node.js release team's OpenPGP keys to main keyring
+    bash $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring
+    
+    LATEST_NODEJS_VERSION=$(asdf list-all nodejs | grep -v - | tail -1)
+    asdf install nodejs $LATEST_NODEJS_VERSION
+    asdf global nodejs $LATEST_NODEJS_VERSION
 fi
 
 # restore config
