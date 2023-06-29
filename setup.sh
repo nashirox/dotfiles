@@ -45,9 +45,17 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew bundle --file $DOTPATH/macos/Brewfile
 fi
 
+
+if !(type asdf > /dev/null 2>&1); then
+fi
+
 # install latest Ruby
 if !(type ruby > /dev/null 2>&1); then
-    asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+    echo -e "\n. \"$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash\"" >> ~/.bashrc
+    echo -e "\n. \"$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash\"" >> ~/.bashrc
+    . $HOME/.bashrc
+
+    asdf plugin add ruby
     LATEST_RUBY_VERSION=$(asdf list-all ruby | tail -1)
     asdf install ruby $LATEST_RUBY_VERSION
     asdf global ruby $LATEST_RUBY_VERSION
