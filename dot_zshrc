@@ -1,0 +1,39 @@
+eval "$(starship init zsh)"
+eval "$(mise activate zsh)"
+eval "$(atuin init zsh)"
+eval "$(sheldon source)"
+eval "$(op signin)"
+
+alias cat="bat"
+alias ll="eza --icons -al --group-directories-first"
+alias tree="eza --tree --icons --group-directories-first"
+abbr g="git"
+
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt auto_pushd
+setopt auto_cd
+autoload -Uz compinit
+compinit
+
+function ghq-fzf-navigation() {
+  local src=$(ghq list > /dev/null | fzf --query "$LBUFFER")
+  if [ -n "$src" ]; then
+    BUFFER="cd $(ghq root)/$src"
+    zle accept-line
+  fi
+  zle -R -c
+}
+zle -N ghq-fzf-navigation
+bindkey '^g' ghq-fzf-navigation  # Ctrl+g に割り当て
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/daisuke.nashiro/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
