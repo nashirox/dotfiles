@@ -2,7 +2,10 @@ eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
 eval "$(atuin init zsh)"
 eval "$(sheldon source)"
-eval "$(op signin)"
+# op signin はインタラクティブ端末のみで実行（VS Code環境解決のタイムアウト防止）
+if [[ -o interactive ]] && [[ -t 0 ]]; then
+  eval "$(op signin)"
+fi
 
 alias cat="bat"
 alias ll="eza --icons -al --group-directories-first"
