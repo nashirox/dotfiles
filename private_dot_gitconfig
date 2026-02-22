@@ -1,0 +1,10 @@
+[user]
+	email = nashirox@gmail.com
+	name = Daisuke Nashiro
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF9yVre561hSFPJTGLpJgLy4nptLt1lAmy8aOm2YnwGH
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
