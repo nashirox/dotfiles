@@ -1,0 +1,19 @@
+# グローバル呼び出しショートカットキー Shift + Tab
+keybind = global:shift+space=toggle_quick_terminal
+
+# クイックターミナルの外観設定
+quick-terminal-position = top
+quick-terminal-screen = main
+quick-terminal-animation-duration = 0.1
+quick-terminal-size = 80%
+
+# 外観
+background-opacity = 0.85
+
+# 画面分割したときにpathが引き継がれる
+window-inherit-working-directory = true
+
+# 起動時に前の作業フォルダを引き継ぐ
+window-save-state = always
+
+font-family = "JetBrainsMono Nerd Font"
