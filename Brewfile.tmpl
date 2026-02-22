@@ -1,0 +1,111 @@
+# =============================================
+# 共通（会社・個人 両方にインストール）
+# =============================================
+
+brew "atuin", restart_service: :changed
+brew "bat"
+brew "chezmoi"
+brew "eza"
+brew "fzf"
+brew "gh"
+brew "ghq"
+brew "jq"
+brew "mise"
+brew "opencode"
+brew "starship"
+brew "trasta298/tap/keifu"
+
+cask "1password-cli"
+cask "appcleaner"
+cask "aqua-voice"
+cask "azookey"
+cask "copilot-cli"
+cask "coteditor"
+cask "dash"
+cask "docker-desktop"
+cask "figma"
+cask "font-cica"
+cask "font-hack-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-udev-gothic-nf"
+cask "ghostty"
+cask "gitify"
+cask "google-drive"
+cask "istat-menus"
+cask "jordanbaird-ice"
+cask "nani"
+cask "ngrok"
+cask "notchnook"
+cask "popclip"
+cask "raycast"
+cask "slack"
+cask "visual-studio-code"
+
+{{ if eq .machine_type "work" -}}
+# =============================================
+# 会社用のみ
+# =============================================
+
+tap "anomalyco/tap"
+tap "trasta298/tap"
+
+brew "aws-sso-cli"
+brew "gitleaks"
+brew "lefthook"
+brew "mysql-client@8.0", link: true
+brew "mysql@8.0"
+brew "overmind"
+brew "pigz"
+brew "pre-commit"
+brew "pv"
+brew "redis"
+brew "sheldon"
+
+cask "aws-vault-binary"
+{{ end -}}
+
+{{ if eq .machine_type "personal" -}}
+# =============================================
+# 個人用のみ
+# =============================================
+
+brew "awscli"
+brew "ffmpeg"
+brew "heroku"
+brew "lsd"
+brew "mas"
+brew "terminal-notifier"
+brew "uv"
+
+cask "1password"
+cask "chatgpt"
+cask "chatwork"
+cask "claude"
+cask "claude-code"
+cask "dropbox"
+cask "epic-games"
+cask "evernote"
+cask "google-chrome"
+cask "obsidian"
+cask "rekordbox"
+cask "steam"
+cask "synology-drive"
+
+mas "1Password for Safari", id: 1569813296
+mas "Amphetamine", id: 937984704
+mas "BetterSnapTool", id: 417375580
+mas "CotEditor", id: 1024640650
+mas "Fantastical", id: 975937182
+mas "Keepa - Price Tracker", id: 1533805339
+mas "Kindle", id: 302584613
+mas "LINE", id: 539883307
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Word", id: 462054704
+mas "Obsidian Web Clipper", id: 6720708363
+mas "PastePal", id: 1503446680
+mas "Slack", id: 803453959
+mas "Spark Desktop", id: 6445813049
+mas "Xcode", id: 497799835
+mas "辞書 by 物書堂", id: 1380563956
+{{ end -}}
