@@ -11,7 +11,6 @@ brew "fzf"
 brew "gh"
 brew "ghq"
 brew "gitleaks"
-brew "herdr"
 brew "jq"
 brew "mise"
 brew "opencode"
@@ -19,41 +18,13 @@ brew "sheldon"
 brew "starship"
 brew "wget"
 
-cask "1password"
-cask "1password-cli"
-cask "appcleaner"
-cask "aqua-voice"
-cask "claude"
-cask "claude-code"
-cask "copilot-cli"
-cask "coteditor"
-cask "docker-desktop"
-cask "figma"
-cask "font-cica"
-cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-udev-gothic-nf"
-cask "ghostty"
-cask "google-chrome"
-cask "google-drive"
-cask "google-japanese-ime"
-cask "istat-menus"
-cask "jordanbaird-ice"
-cask "nani"
-cask "ngrok"
-cask "notchnook"
-cask "popclip"
-cask "raycast"
-cask "slack"
-cask "visual-studio-code"
-cask "zed"
 
 {{ if eq .machine_type "work" -}}
 # =============================================
 # 会社用のみ
 # =============================================
-
-tap "anomalyco/tap"
 
 brew "aws-sso-cli"
 brew "datadog/pack/pup"
@@ -66,9 +37,6 @@ brew "pre-commit"
 brew "pv"
 brew "redis"
 
-cask "aws-vault-binary"
-cask "calendr"
-cask "localsend"
 {{ end -}}
 
 {{ if eq .machine_type "personal" -}}
@@ -81,18 +49,7 @@ brew "ffmpeg"
 brew "heroku"
 brew "lsd"
 brew "mas"
-brew "terminal-notifier"
 brew "uv"
-
-cask "chatgpt"
-cask "codex"
-cask "codex-app"
-cask "dropbox"
-cask "epic-games"
-cask "obsidian"
-cask "rekordbox"
-cask "steam"
-cask "synology-drive"
 
 mas "Amphetamine", id: 937984704
 mas "BetterSnapTool", id: 417375580
